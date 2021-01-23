@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <welcome-file-list>
+        <welcome-file>session.html</welcome-file>
+    </welcome-file-list>
+    <!--servlet给Tomcat配置Servlet程序-->
+    <servlet>
+        <!--name给Servlet程序起一个别名（一般是类名）-->
+        <servlet-name>servlet</servlet-name>
+        <!--class是Servlet的全类名-->
+        <servlet-class>com.chl.servlet.servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>servlet1</servlet-name>
+        <servlet-class>com.chl.servlet.servlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servlet1</servlet-name>
+        <url-pattern>/servlet1</url-pattern>
+    </servlet-mapping>
+    <!--给servlet配置访问地址-->
+    <servlet-mapping>
+        <!--servlet-name标签的作用是告诉服务器，我当前的配置的地址是给哪个servlet程序用-->
+        <servlet-name>servlet</servlet-name>
+        <!--url-patten配置访问地址
+            / :表示地址为http://ip:port/工程路径
+            /hello :表示地址为http://ip:port/工程路径/hello
+        -->
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    <!--用于配置上传文件的-->
+    <servlet>
+        <servlet-name>UploadServlet</servlet-name>
+        <servlet-class>com.chl.servlet.UploadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadServlet</servlet-name>
+        <url-pattern>/uploadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>download</servlet-name>
+        <servlet-class>com.chl.servlet.download</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name> download</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+
+    <!--配置ServletContextListener-->
+    <listener>
+        <listener-class>com.chl.listener.listener</listener-class>
+    </listener>
+
+
+    <!--
+    cookie与session的演示
+    -->
+    <servlet>
+        <servlet-name>CookieServlet</servlet-name>
+        <servlet-class>com.chl.cookie.CookieServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieServlet</servlet-name>
+        <url-pattern>/cookieServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SessionServlet</servlet-name>
+        <servlet-class>com.chl.session.SessionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SessionServlet</servlet-name>
+        <url-pattern>/sessionServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.chl.servlet.LoginServlet</servlet-class>
+    </servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    
+    <!--用于配置一个Filter过滤器-->
+    <filter>
+        <filter-name>TestFilter</filter-name>
+        <filter-class>com.chl.filer.TestFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>TestFilter</filter-name>
+        <url-pattern>/cookieAndsession/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>TestFilterLoginServlet</servlet-name>
+        <servlet-class>com.chl.test.TestFilterLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestFilterLoginServlet</servlet-name>
+        <url-pattern>/testFilterLoginServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AjaxServlet</servlet-name>
+        <servlet-class>com.chl.ajax.AjaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjaxServlet</servlet-name>
+        <url-pattern>/ajaxServlet</url-pattern>
+    </servlet-mapping>
+</web-app>

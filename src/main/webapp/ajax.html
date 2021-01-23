@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //在这里用javaScrip发起Ajax请求。访问AjaxServlet中javaScriptAjax
+        function ajaxRequest() {
+            //1.首先创建XMLHTTPRequest
+            var xmlhttpRequest=new XMLHttpRequest();
+            //调用open方法设置请求参数
+            xmlhttpRequest.open("GET","http://localhost:8080/webProject_war/ajaxServlet?action=javaScriptAjax",true);
+
+            xmlhttpRequest.onreadystatechange=function(){
+                if(xmlhttpRequest.readyState==4&&xmlhttpRequest.status==200){
+                   // alert(xmlhttpRequest.responseText);
+                    document.getElementById("id_01").innerHTML=xmlhttpRequest.responseText;
+                }
+            }
+            xmlhttpRequest.send();
+
+
+        }
+    </script>
+</head>
+<body>
+<button onclick="ajaxRequest()"> ajaxrequest</button>
+<div id="id_01"></div>
+</body>
+</html>
